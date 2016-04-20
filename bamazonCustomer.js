@@ -1,4 +1,4 @@
-// Display itmes available for sale
+// Display items available for sale
 // This initial display, should include the ids, names, and prices of products for sale
 
 // Prompt user
@@ -14,3 +14,36 @@
 // Prompt user to confirm
 // If no, reset
 // If yes, deduct from database and reset
+
+// Require mysql npm package
+var mysql = require('mysql');
+
+// Creates connection 
+var connection = require("./connection.js");
+
+// Initiate connection
+connection.myConnection.connect(
+
+  function(err){
+
+  if (err) {
+    console.error('Error connecting: ' + 
+      err.stack);
+    return;
+  }
+
+  console.log('Connected!');
+
+});
+
+connection.myConnection.query(
+
+  'SELECT * FROM products', 
+
+  function(err, res){
+
+    if (err) throw err;
+
+    console.log(res);
+
+});
