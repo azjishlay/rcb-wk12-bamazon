@@ -1,19 +1,20 @@
-// Display items available for sale
-// This initial display, should include the ids, names, and prices of products for sale
+// Project Goals:
 
-// Prompt user
-// Ask for ID of desired product
-// Ask for quantity
-// Ask if confirm order or add more
-// Repeat until confirm
+// Display items available for sale. This initial display includes the ids, names, and prices of products for sale.
 
-// Check if product is in stock
-// If no, respond: "Insufficient quantity" and prevent the order from going through
-// If yes, show total cost of purchase
+// Prompt user. 
+// Ask for ID of desired product. 
+// Ask for quantity. 
+// Ask if confirm order.
+// Repeat until confirm.
 
-// Prompt user to confirm
-// If no, reset
-// If yes, deduct from database and reset
+// Check if product is in stock.
+// If no, respond: "Insufficient quantity" and prevent the order from going through.
+// If yes, show total cost of purchase.
+
+// Prompt user to confirm.
+// If no, reset.
+// If yes, deduct from database and reset.
 
 
 // Require dependencies 
@@ -34,7 +35,8 @@ var customerOrder = {
   total: ""
 }
 
-// Creates connection 
+// Create connection 
+// Separate file for password
 var connection = require("./connection.js");
 
 // Initiate connection
@@ -99,11 +101,12 @@ function promptOrder() {
       name: 'item',
       description: bamazonWelcome,
       required: true,
-      // message: 'Options allowed:: 1' + '-' + products.length,
-      // conform: function(value) {
-      //   value = parseInt(value);
-      //   return value > 0 && value <= products.length
-      // }
+      message: 'Please choose from 1' + ' to ' + 
+        products.length + '. \n',
+      conform: function(value) {
+        value = parseInt(value);
+        return value > 0 && value <= products.length
+      }
     },
     {
       name: 'qty',

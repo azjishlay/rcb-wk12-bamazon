@@ -38,5 +38,6 @@ node_modules
 
 .DS_Store
 node_modules
-bamazon.sql
 connection.js
+*.mov
+*.sql
