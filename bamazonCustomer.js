@@ -154,7 +154,7 @@ function promptConfirm() {
         promptOrder();
 
       } else {
-        customerOrder.total = customerOrder.qty * products[customerOrder.id].product_price;
+        customerOrder.total = customerOrder.qty * products[customerOrder.id - 1].product_price;
         console.log('Order total: $' + customerOrder.total.toFixed(2));
         confirmOrder();
       }
@@ -183,8 +183,9 @@ function confirmOrder() {
     if (result.confirm == "Y") {
       makeOrder();
     } else if (result.confirm == "N") {
-      console.log('Order cancelled. Thanks for visiting!');
-      prompt.stop();
+      console.log('Order cancelled. Thanks for visiting! \n');
+      
+      promptOrder();
     } 
   });
 };
